@@ -1,4 +1,19 @@
+import { useState } from "react";
+
+const images = [
+  "/landing-page-img/lan-cont-img.avif",
+  "/landing-page-img/lan-cont-2-img.avif",
+  "/landing-page-img/lan-cont-3-img.avif",
+  "/landing-page-img/lan-cont-6-img.avif",
+];
+
 export default function Landing() {
+  // state for image slide
+  const [current, setCurrent] = useState(0);
+
+  // left right button handling
+  const prev = () => setCurrent((i) => (i === 0 ? images.length - 1 : i - 1));
+  const next = () => setCurrent((i) => (i === images.length - 1 ? 0 : i + 1));
   return (
     <>
       {/* section 1 */}
@@ -100,7 +115,44 @@ export default function Landing() {
       </div>
 
       {/* section 4 */}
-      <div className="w-full h-32 bg-green-400">1</div>
+      <div className="w-full px-4 py-6 md:px-8 pt-20">
+        {/* Heading */}
+        <div className="lg:grid lg:grid-cols-[70%_30%] ">
+          <h2 className="text-2xl md:text-4xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl">
+            The Proof Is In The Polish
+          </h2>
+          <p className="text-sm md:text-3xl text-gray-500 mb-5 lg:text-2xl">
+            Witness the transformative results our clients experience.
+          </p>
+        </div>
+
+        {/* Slider */}
+        <div className="relative w-full h-130 md:h-[500px] rounded-xl overflow-hidden lg:pt-10">
+          <img
+            src={images[current]}
+            alt={`Polish result ${current + 1}`}
+            className="w-full h-full object-cover transition-all duration-500 "
+          />
+
+          {/* Left Button */}
+          <button
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
+            <span className="text-lg">‹</span>
+          </button>
+
+          {/* Right Button */}
+          <button
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
+            <span className="text-lg">›</span>
+          </button>
+        </div>
+      </div>
+
+      {/* section 4 */}
       <div className="w-full h-32 bg-purple-400">1</div>
       <div className="w-full h-32 bg-pink-400">1</div>
     </>
