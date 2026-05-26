@@ -18,7 +18,7 @@ export default function NavBar() {
         {/* nav links */}
         <div className="md:ms-auto flex hidden md:flex gap-5 md:pr-10 lg:pr-30 lg:gap-10">
           {links.map((links, i) => (
-            <NavLink to={links.link} key={i}>
+            <NavLink to={links.link} key={i} className="hover:underline">
               {links.text}
             </NavLink>
           ))}
