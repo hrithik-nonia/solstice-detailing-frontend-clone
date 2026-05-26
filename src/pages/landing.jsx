@@ -15,26 +15,91 @@ export default function Landing() {
         />
 
         {/* text area for banner */}
-        <div className="absolute inset-0 flex items-center w-full pl-10 pr-5 bg-white/10">
-          <h1 className="text-black/90 text-4xl md:text-5xl font-semibold max-w-sm">
+        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 bg-white/10 lg:flex-row lg:items-center lg:pl-16 lg:pr-5">
+          <h1 className="text-black/90 text-3xl md:text-5xl font-bold max-w-xl lg:max-w-sm">
             Automotive perfection, redefined
           </h1>
-
-          <div className="ml-auto">
-            <p className="text-black/80 text-sm md:text-base max-w-[300px]">
+          <div className=" lg:ml-auto ">
+            <p className="text-black/80 text-sm md:text-base mt-4 max-w-md lg:max-w-[300px] ">
               We provide an unrivaled standard of vehicle care, restoring and
               protecting your automotive investment with scientific precision.
             </p>
 
-            <button className="mt-6 w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 cursor-pointer">
+            <button className="mt-6 w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 transition">
               Get a Quote
             </button>
           </div>
         </div>
       </div>
 
-      <div className="w-full h-32 bg-blue-400">1</div>
-      <div className="w-full h-32 bg-yellow-400">1</div>
+      {/* section 2 */}
+
+      <div className="px-4 py-5 md:px-8 md:py-12 w-full lg:grid lg:grid-cols-[60%_40%] lg:h-screen">
+        {/* Two Images Row */}
+        <div className="flex gap-2.5 md:gap-5 mb-6 md:mb-10 lg:px-5 lg:py-20">
+          {/* Left Image — 60% */}
+          <div className="flex-[6] h-40 md:h-80 lg:h-55 rounded-xl overflow-hidden">
+            <img
+              src="/landing-page-img/lan-cont-img.avif"
+              alt="Car headlight"
+              className="w-full h-full object-cover lg:object-contain"
+            />
+          </div>
+
+          {/* Right Image — 40% */}
+          <div className="flex-[4] h-40 md:h-80 lg:h-30 rounded-xl overflow-hidden lg:mt-auto ">
+            <img
+              src="/landing-page-img/lan-cont-2-img.avif"
+              alt="Car mirror"
+              className="w-full h-full object-cover lg:object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="lg:my-auto lg:gap-40 lg:flex lg:flex-col lg:px-5">
+          {/* Text Content */}
+          <h2 className="text-2xl md:text-5xl font-medium text-gray-900 leading-snug mb-3 lg:text-4xl">
+            A Spectrum Of Detailing Excellence
+          </h2>
+
+          <div>
+            <p className="text-sm md:text-2xl text-gray-500 leading-relaxed mb-6 lg:text-lg">
+              From intensive restoration to protective ceramic coatings, our
+              services are tailored to the unique needs of your vehicle.
+            </p>
+
+            {/* Button */}
+            <button className="bg-black text-white text-sm md:text-xl lg:text-lg font-medium px-6 py-4 rounded-md hover:bg-gray-800 transition  lg:py-3 lg:px-6">
+              Discover Our Services
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* section 3 */}
+      <div className="w-full py-5 lg:grid lg:grid-cols-[50%_50%]">
+        <div>
+          <img
+            src="../../public/landing-page-img/lan-cont-3-img.avif"
+            alt="section 3 image"
+            className="object-contain lg:h-screen"
+          />
+        </div>
+
+        <div className="px-4 py-6 md:px-8 md:py-15 w-[90%] lg:my-auto lg:w-full lg:px-30">
+          <h2 className="text-2xl md:text-5xl font-medium text-gray-900 leading-tight mb-3 lg:leading-12">
+            Where Artistry <br /> Meets Engineering
+          </h2>
+
+          <p className="text-sm md:text-3xl text-gray-500 leading-5 md:leading-10 lg:text-lg lg:leading-6 lg:pt-7">
+            Our multi-stage process combines cutting-edge technology with
+            time-honored techniques, ensuring a flawless finish that endures. We
+            treat every vehicle as a masterpiece in the making.
+          </p>
+        </div>
+      </div>
+
+      {/* section 4 */}
       <div className="w-full h-32 bg-green-400">1</div>
       <div className="w-full h-32 bg-purple-400">1</div>
       <div className="w-full h-32 bg-pink-400">1</div>
