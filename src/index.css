@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* add font family */
+body {
+  font-family: "Quicksand", sans-serif;
+}
