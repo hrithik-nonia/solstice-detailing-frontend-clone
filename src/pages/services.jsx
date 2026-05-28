@@ -61,7 +61,7 @@ export default function Services() {
       </div>
 
       {/* second section */}
-      <div className="w-full bg-green-500 relative h-[550px]">
+      <div className="w-full relative h-[550px]">
         <img
           src="../../public/servise-page-img/banner-img.avif"
           alt="Service Detail"
