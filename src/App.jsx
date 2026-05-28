@@ -4,6 +4,7 @@ import Gallery from "./pages/gallery.jsx";
 import Contact from "./pages/contact.jsx";
 import NavBar from "./component/navbar.jsx";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./component/footer.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </>
   );
 }
