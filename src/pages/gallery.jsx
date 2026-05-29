@@ -10,6 +10,12 @@ export default function Gallery() {
     "/gallery-page-img/img-7.avif",
   ];
 
+  // random column
+  const colSpans = ["md:col-span-1", "md:col-span-2"];
+
+  // random row
+  const rowSpans = ["row-span-1", "row-span-2"];
+
   return (
     <>
       <div className=" py-20 px-3 md:px-6 md:py-30">
@@ -26,18 +32,27 @@ export default function Gallery() {
 
         {/* image section */}
         <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[200px] gap-4 ">
-          {tempImg.map((img, index) => (
-            <div
-              key={index}
-              className={`overflow-hidden rounded-xl shadow-md md:col-span-${Math.floor(Math.random() * 3)} row-span-${Math.floor(Math.random() * 3)}`}
-            >
-              <img
-                src={img}
-                alt={`car image ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
-              />
-            </div>
-          ))}
+          {tempImg.map((img, index) => {
+            // random column
+            const randomCol =
+              colSpans[Math.floor(Math.random() * colSpans.length)];
+
+            // random row
+            const randomRow =
+              rowSpans[Math.floor(Math.random() * rowSpans.length)];
+            return (
+              <div
+                key={index}
+                className={`overflow-hidden rounded-xl shadow-md ${randomCol} ${randomRow}`}
+              >
+                <img
+                  src={img}
+                  alt={`car image ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

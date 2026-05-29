@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { testimonials } from "../constant.js";
-
+import { NavLink } from "react-router-dom";
 // temp img for section 4
 const images = [
   "/landing-page-img/lan-cont-img.avif",
@@ -37,14 +37,17 @@ export default function Landing() {
             Automotive perfection, redefined
           </h1>
           <div className=" lg:ml-auto ">
-            <p className="text-black/80 text-sm md:text-base mt-4 max-w-md lg:max-w-[300px] ">
+            <p className="text-black/80 text-sm md:text-base mt-4 max-w-md lg:max-w-[300px] mb-6">
               We provide an unrivaled standard of vehicle care, restoring and
               protecting your automotive investment with scientific precision.
             </p>
 
-            <button className="mt-6 w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 transition">
+            <NavLink
+              to="/contact"
+              className=" w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 transition"
+            >
               Get a Quote
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>

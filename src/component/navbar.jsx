@@ -3,10 +3,15 @@ import { NavLink } from "react-router-dom";
 import { IoCall } from "react-icons/io5";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Popup from "./popup";
 
 export default function NavBar() {
   // state for burger menu toggle
   const [isOpen, setIsOpen] = useState(false);
+
+  // state for popup
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <>
       <nav className="absolute z-10 flex w-full p-5 md:px-8 lg:py-7 lg:px-15">
@@ -16,7 +21,7 @@ export default function NavBar() {
         </NavLink>
 
         {/* nav links */}
-        <div className="md:ms-auto flex hidden md:flex gap-5 md:pr-10 lg:pr-30 lg:gap-10">
+        <div className="md:ms-auto  hidden md:flex gap-5 md:pr-10 lg:pr-30 lg:gap-10">
           {links.map((links, i) => (
             <NavLink to={links.link} key={i} className="hover:underline">
               {links.text}
@@ -25,7 +30,10 @@ export default function NavBar() {
         </div>
 
         {/* contact detail */}
-        <span className="flex items-center  gap-2 cursor-pointer hidden md:flex">
+        <span
+          className=" items-center  gap-2 cursor-pointer hidden md:flex"
+          onClick={() => setShowPopup(true)}
+        >
           <IoCall size={"20px"} />
           <u>123-456-7890</u>
         </span>
@@ -61,6 +69,9 @@ export default function NavBar() {
           </div>
         )}
       </nav>
+
+      {/* show popup */}
+      {showPopup && <Popup onClose={() => setShowPopup(false)} />}
     </>
   );
 }
