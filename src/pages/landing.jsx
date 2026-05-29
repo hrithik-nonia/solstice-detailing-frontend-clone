@@ -89,9 +89,12 @@ export default function Landing() {
             </p>
 
             {/* Button */}
-            <button className="bg-black text-white text-sm md:text-xl lg:text-lg font-medium px-6 py-4 rounded-md hover:bg-gray-800 transition  lg:py-3 lg:px-6">
+            <NavLink
+              to="/service"
+              className="bg-black text-white text-sm md:text-xl lg:text-lg font-medium px-6 py-4 rounded-md hover:bg-gray-800 transition  lg:py-3 lg:px-6 hover:underline"
+            >
               Discover Our Services
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>

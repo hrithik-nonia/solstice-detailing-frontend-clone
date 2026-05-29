@@ -5,11 +5,13 @@ import Contact from "./pages/contact.jsx";
 import NavBar from "./component/navbar.jsx";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./component/footer.jsx";
+import ScrollToTop from "./component/scroll-to-top.jsx";
 
 function App() {
   return (
     <>
       <NavBar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/service" element={<Service />} />
