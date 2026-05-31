@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { testimonials } from "../constant.js";
 import { NavLink } from "react-router-dom";
+import ImgCatelog from "../component/img-catelog.jsx";
+import { useAppContext } from "../app-context/app-context.jsx";
+
 // temp img for section 4
 const images = [
   "/landing-page-img/lan-cont-img.avif",
@@ -10,12 +13,18 @@ const images = [
 ];
 
 export default function Landing() {
-  // state for image slide
-  const [current, setCurrent] = useState(0);
-
+  // use state from context to slide images
+  const { current, setCurrent } = useAppContext();
   // left right button handling
   const prev = () => setCurrent((i) => (i === 0 ? images.length - 1 : i - 1));
   const next = () => setCurrent((i) => (i === images.length - 1 ? 0 : i + 1));
+
+  // state for imgcatelog
+  const [showImages, setShowImages] = useState(false);
+
+  // ref for section 4
+  const sec4Ref = useRef(null);
+
   return (
     <>
       {/* section 1 */}
@@ -123,7 +132,7 @@ export default function Landing() {
       </div>
 
       {/* section 4 */}
-      <div className="w-full px-4 py-6 md:px-8 pt-20">
+      <div className="w-full px-4 py-6 md:px-8 pt-20 relative" ref={sec4Ref}>
         {/* Heading */}
         <div className="lg:grid lg:grid-cols-[70%_30%] ">
           <h2 className="text-2xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl">
@@ -139,7 +148,10 @@ export default function Landing() {
           <img
             src={images[current]}
             alt={`Polish result ${current + 1}`}
-            className="w-full h-full object-cover transition-all duration-500 "
+            className="w-full h-full object-cover transition-all duration-500 cursor-pointer"
+            onClick={() => {
+              setShowImages(true);
+            }}
           />
 
           {/* Left Button */}
@@ -158,6 +170,20 @@ export default function Landing() {
             <span className="text-lg">›</span>
           </button>
         </div>
+
+        {/* images shows here */}
+        {showImages && (
+          <ImgCatelog
+            onClose={() => setShowImages(false)}
+            redirectToSec4={() =>
+              sec4Ref.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              })
+            }
+            currentIndex={current}
+          />
+        )}
       </div>
 
       {/* section 5 */}

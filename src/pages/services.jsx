@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function Services() {
   const tempCardData = [
     {
@@ -78,9 +80,12 @@ export default function Services() {
             specialized services like wheel coating, glass polishing, and engine
             bay detailing
           </p>
-          <button className="mt-6 w-fit bg-white text-black font-semibold px-6 py-3 rounded-md hover:bg-white/60 transition">
+          <NavLink
+            to="/contact"
+            className="mt-6 w-fit bg-white text-black font-semibold px-6 py-3 rounded-md hover:bg-white/60 transition"
+          >
             Get a Quote
-          </button>
+          </NavLink>
         </div>
       </div>
     </>

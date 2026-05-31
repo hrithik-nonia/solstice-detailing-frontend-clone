@@ -1,0 +1,31 @@
+<button
+            onClick={() => setCurrentIdx((prev) => (prev > 0 ? prev - 1 : 0))}
+            className="absolute left-0 z-10 bg-white shadow px-3 py-2 rounded-full disabled:opacity-40"
+            disabled={currentIdx === 0}
+            aria-label="Previous Image"
+          >
+            &#8592;
+          </button>
+
+          {/* Images Scroll Area */}
+          <div className="w-full flex justify-center items-center overflow-hidden">
+            <img
+              src={images[currentIdx]}
+              alt={`Gallery Image ${currentIdx + 1}`}
+              className="object-contain w-full h-[350px] rounded-md shadow transition-transform duration-300"
+            />
+          </div>
+
+          {/* Right Shift Button */}
+          <button
+            onClick={() =>
+              setCurrentIdx((prev) =>
+                prev < images.length - 1 ? prev + 1 : prev,
+              )
+            }
+            className="absolute right-0 z-10 bg-white shadow px-3 py-2 rounded-full disabled:opacity-40"
+            disabled={currentIdx === images.length - 1}
+            aria-label="Next Image"
+          >
+            &#8594;
+          </button>
