@@ -1,12 +1,31 @@
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import Popup from "./popup";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   // icon array for social media icon
   const socials = [
-    { href: "#", icon: <FaFacebook size={18} />, label: "Facebook" },
-    { href: "#", icon: <FaInstagram size={18} />, label: "Instagram" },
-    { href: "#", icon: <FaYoutube size={18} />, label: "YouTube" },
+    {
+      href: "https://www.facebook.com/",
+      icon: <FaFacebook size={18} />,
+      label: "Facebook",
+    },
+    {
+      href: "https://www.instagram.com/",
+      icon: <FaInstagram size={18} />,
+      label: "Instagram",
+    },
+    {
+      href: "https://www.youtube.com/",
+      icon: <FaYoutube size={18} />,
+      label: "YouTube",
+    },
   ];
+
+  // state for show popup
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <>
       <footer className="w-full px-6 py-10 text-center border-t border-gray-200 lg:px-10">
@@ -17,12 +36,25 @@ export default function Footer() {
           </p>
 
           {/* Address & Contact */}
-          <div>
-            <p className="text-sm text-gray-500 leading-relaxed mb-2">
-              500 Terry Francine St, San Francisco, <br /> CA 94158
-            </p>
-            <p className="text-sm text-gray-500 mb-1">123-456-7890</p>
-            <p className="text-sm text-gray-500 mb-6">info@mysite.com</p>
+          <div className="flex flex-col text-gray-500">
+            <a
+              href="https://maps.app.goo.gl/SK1AmXZCRJsMdUAN9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="  leading-relaxed mb-3 cursor-pointer"
+            >
+              Asansol , ningha
+            </a>
+
+            <span
+              className="  leading-relaxed mb-3 cursor-pointer"
+              onClick={() => setShowPopup(true)}
+            >
+              123-456-7890
+            </span>
+            <span className="  leading-relaxed mb-3 cursor-pointer">
+              info@mysite.com
+            </span>
           </div>
           {/* Social Icons */}
           <div className="flex justify-center gap-3 mb-8">
@@ -48,13 +80,14 @@ export default function Footer() {
               "Accessibility Statement",
               "Terms & Conditions",
             ].map((link) => (
-              <a
+              <NavLink
+                to="/faq"
                 key={link}
                 href="#"
                 className="text-sm text-gray-900 underline underline-offset-2 hover:text-gray-600"
               >
                 {link}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -69,6 +102,9 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
+      {/* show popup */}
+      {showPopup && <Popup onClose={() => setShowPopup(false)} />}
     </>
   );
 }

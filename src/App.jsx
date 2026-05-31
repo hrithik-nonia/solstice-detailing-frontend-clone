@@ -6,6 +6,7 @@ import NavBar from "./component/navbar.jsx";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./component/footer.jsx";
 import ScrollToTop from "./component/scroll-to-top.jsx";
+import Faq from "./pages/faq-page.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/service" element={<Service />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
       <Footer />
     </>
