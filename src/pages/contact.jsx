@@ -105,8 +105,11 @@ export default function Contact() {
                 Desired Service
               </label>
               <div className="relative">
-                <select className="w-full border border-gray-300 rounded px-3 py-3 text-sm text-gray-400 appearance-none outline-none focus:border-gray-500 bg-white cursor-pointer">
-                  <option value="" disabled selected>
+                <select
+                  defaultValue=""
+                  className="w-full border border-gray-300 rounded px-3 py-3 text-sm text-gray-400 appearance-none outline-none focus:border-gray-500 bg-white cursor-pointer"
+                >
+                  <option value="" disabled>
                     Select a service
                   </option>
                   <option value="interior">Interior Restoration</option>

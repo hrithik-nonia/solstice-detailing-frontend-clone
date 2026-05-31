@@ -126,7 +126,7 @@ export default function Landing() {
       <div className="w-full px-4 py-6 md:px-8 pt-20">
         {/* Heading */}
         <div className="lg:grid lg:grid-cols-[70%_30%] ">
-          <h2 className="text-2xl md:text-4xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl">
+          <h2 className="text-2xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl">
             The Proof Is In The Polish
           </h2>
           <p className="text-sm md:text-3xl text-gray-500 mb-5 lg:text-2xl">

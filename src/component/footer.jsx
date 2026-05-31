@@ -26,14 +26,26 @@ export default function Footer() {
   // state for show popup
   const [showPopup, setShowPopup] = useState(false);
 
+  // temp footer links
+  const footerLinks = [
+    { label: "Privacy policy", link: "/faq/privacy-policy" },
+    { label: "Refund Policy", link: "/faq/refund-policy" },
+    { label: "Accessibility Statement", link: "/faq/Accessibility-Statement" },
+    { label: "Terms & Conditions", link: "/faq/terms-conditions" },
+  ];
+
   return (
     <>
       <footer className="w-full px-6 py-10 text-center border-t border-gray-200 lg:px-10">
         <div className="lg:flex lg:justify-between ">
           {/* Brand Name */}
-          <p className="text-base font-medium text-gray-900 mb-6 lg:text-3xl">
+          <NavLink
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-base font-medium text-gray-900 mb-6 lg:text-3xl"
+          >
             Solstice Detailing
-          </p>
+          </NavLink>
 
           {/* Address & Contact */}
           <div className="flex flex-col text-gray-500">
@@ -74,19 +86,13 @@ export default function Footer() {
         {/* Links */}
         <div className="flex flex-col gap-2 mb-8 lg:grid lg:grid-cols-2 ">
           <div className="lg:grid lg:grid-cols-2 lg:w-1/2 lg:gap-y-3">
-            {[
-              "Privacy policy",
-              "Refund Policy",
-              "Accessibility Statement",
-              "Terms & Conditions",
-            ].map((link) => (
+            {footerLinks.map(({ label, link }, i) => (
               <NavLink
-                to="/faq"
-                key={link}
-                href="#"
+                to={link}
+                key={i}
                 className="text-sm text-gray-900 underline underline-offset-2 hover:text-gray-600"
               >
-                {link}
+                {label}
               </NavLink>
             ))}
           </div>
