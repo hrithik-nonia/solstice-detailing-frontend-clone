@@ -3,21 +3,19 @@ import { testimonials } from "../constant.js";
 import { NavLink } from "react-router-dom";
 import ImgCatelog from "../component/img-catelog.jsx";
 import { useAppContext } from "../app-context/app-context.jsx";
-
-// temp img for section 4
-const images = [
-  "/landing-page-img/lan-cont-img.avif",
-  "/landing-page-img/lan-cont-2-img.avif",
-  "/landing-page-img/lan-cont-3-img.avif",
-  "/landing-page-img/lan-cont-6-img.avif",
-];
+import { images } from "../constant.js";
 
 export default function Landing() {
   // use state from context to slide images
   const { current, setCurrent } = useAppContext();
+
+  // slice images for section 4
+  const section4Images = images.slice(0, 6);
   // left right button handling
-  const prev = () => setCurrent((i) => (i === 0 ? images.length - 1 : i - 1));
-  const next = () => setCurrent((i) => (i === images.length - 1 ? 0 : i + 1));
+  const prev = () =>
+    setCurrent((i) => (i === 0 ? section4Images.length - 1 : i - 1));
+  const next = () =>
+    setCurrent((i) => (i === section4Images.length - 1 ? 0 : i + 1));
 
   // state for imgcatelog
   const [showImages, setShowImages] = useState(false);
@@ -146,7 +144,7 @@ export default function Landing() {
         {/* Slider */}
         <div className="relative w-full h-130 md:h-[500px] rounded-xl overflow-hidden lg:pt-10">
           <img
-            src={images[current]}
+            src={section4Images[current]}
             alt={`Polish result ${current + 1}`}
             className="w-full h-full object-cover transition-all duration-500 cursor-pointer"
             onClick={() => {
@@ -182,6 +180,7 @@ export default function Landing() {
               })
             }
             currentIndex={current}
+            section4Images={section4Images}
           />
         )}
       </div>

@@ -159,6 +159,23 @@ export const faqData = [
 ]
 
 
+export const images = [
+  "/landing-page-img/lan-cont-img.avif",
+  "/landing-page-img/lan-cont-2-img.avif",
+  "/landing-page-img/lan-cont-3-img.avif",
+  "/landing-page-img/lan-cont-6-img.avif",
+  "/landing-page-img/lan-cont-4-img.avif",
+  "/landing-page-img/lan-cont-5-img.avif",
+  "/gallery-page-img/img-1.avif",
+  "/gallery-page-img/img-2.avif",
+  "/gallery-page-img/img-3.avif",
+  "/gallery-page-img/img-4.avif",
+  "/gallery-page-img/img-5.avif",
+  "/gallery-page-img/img-6.avif",
+  "/gallery-page-img/img-7.avif",
+]
+
+
 
 
 

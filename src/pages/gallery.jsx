@@ -1,14 +1,13 @@
+import ImgCatelog from "../component/img-catelog";
+import { images } from "../constant.js";
+import { useState } from "react";
+
 export default function Gallery() {
-  // Gallery images from public/gallery-page-images
-  const tempImg = [
-    "/gallery-page-img/img-1.avif",
-    "/gallery-page-img/img-2.avif",
-    "/gallery-page-img/img-3.avif",
-    "/gallery-page-img/img-4.avif",
-    "/gallery-page-img/img-5.avif",
-    "/gallery-page-img/img-6.avif",
-    "/gallery-page-img/img-7.avif",
-  ];
+  // state for show images
+  const [showImages, setShowImages] = useState(false);
+
+  // slice images for gallery
+  const galleryImages = images.slice(6, 13);
 
   // random column
   const colSpans = ["md:col-span-1", "md:col-span-2"];
@@ -32,7 +31,7 @@ export default function Gallery() {
 
         {/* image section */}
         <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[200px] gap-4 ">
-          {tempImg.map((img, index) => {
+          {galleryImages.map((img, index) => {
             // random column
             const randomCol =
               colSpans[Math.floor(Math.random() * colSpans.length)];
@@ -49,11 +48,21 @@ export default function Gallery() {
                   src={img}
                   alt={`car image ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
+                  onClick={() => setShowImages(true)}
                 />
               </div>
             );
           })}
         </div>
+
+        {/* show images here */}
+        {showImages && (
+          <ImgCatelog
+            onClose={() => setShowImages(false)}
+            redirectToSec4={() => {}}
+            section4Images={galleryImages}
+          />
+        )}
       </div>
     </>
   );
