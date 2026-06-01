@@ -1,32 +1,65 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 export default function Contact() {
+  // title animation
+  useGSAP(() => {
+    gsap.from(".contect-title", {
+      x: -100,
+      opacity: 0,
+      ease: "power1.inOut",
+    });
+
+    // text animation
+    gsap.from(".contect-text", {
+      y: 100,
+      opacity: 0,
+      ease: "power1.inOut",
+      delay: 0.2,
+    });
+
+    gsap.from(".context-add", {
+      y: 100,
+      opacity: 0,
+      ease: "power1.inOut",
+      delay: 0.2,
+    });
+
+    gsap.from(".contect-detail", {
+      y: 100,
+      opacity: 0,
+      ease: "power1.inOut",
+      delay: 0.2,
+    });
+  });
   return (
     <>
       <div className=" md:py-35 md:px-10 grid md:grid-cols-2 py-25 px-3 ">
         <div className=" lg:w-[70%] mb-10">
           {/* Heading */}
-          <h1 className="lg:text-5xl lg:font-semibold text-gray-900 lg:mb-5 text-2xl mb-3">
+          <h1 className="lg:text-5xl lg:font-semibold text-gray-900 lg:mb-5 text-2xl mb-3 contect-title">
             Schedule Your Consultation
           </h1>
 
           {/* Subtext */}
-          <p className="lg:text-lg lg:leading-6 text-gray-500 lg:mb-15 mb-10">
+          <p className="lg:text-lg lg:leading-6 text-gray-500 lg:mb-15 mb-10 contect-text">
             Let's discuss a bespoke detailing solution for your vehicle. We are
             ready to answer your questions and book your appointment.
           </p>
 
           {/* Address */}
-          <div className="lg:mb-15 mb-10">
+          <div className="lg:mb-15 mb-10 context-add">
             <p className="lg:text-lg text-gray-400 mb-1 text-lg">Address</p>
-            <p className="lg:text-xl text-gray-900 lg:font-medium leading-relaxed text-xl">
+            <p className="lg:text-xl text-gray-900 lg:font-medium leading-relaxed text-xl ">
               500 Terry Francine St
               <br />
               San Francisco, CA 94158
             </p>
           </div>
 
-          <div className="lg:flex lg:gap-15 mb-10">
+          <div className="lg:flex lg:gap-15 mb-10 contect-detail">
             {/* Telephone */}
-            <div className="mb-10">
+            <div className="mb-10 ">
               <p className="lg:text-lg text-gray-400 mb-1 text-lg">Telephone</p>
               <p className="lg:text-xl text-gray-900 font-medium text-xl">
                 123-456-7890
