@@ -1,6 +1,8 @@
 import ImgCatelog from "../component/img-catelog";
 import { images } from "../constant.js";
 import { useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Gallery() {
   // state for show images
@@ -15,15 +17,23 @@ export default function Gallery() {
   // random row
   const rowSpans = ["row-span-1", "row-span-2"];
 
+  // animation
+  useGSAP(() => {
+    gsap.from(".gallery-text-animate", {
+      y: 100,
+      opacity: 0,
+    });
+  });
   return (
     <>
-      <div className=" py-20 px-3 md:px-6 md:py-30">
+      <div className=" py-20 px-3 md:px-6 md:py-30 lg:py-40">
         {/* text section */}
-        <div className=" text-black/90 mb-10 md:mb-20">
-          <h1 className="text-2xl mb-2 md:text-4xl md:mb-5">
+        <div className=" text-black/90 mb-10 md:mb-20 grid lg:grid-cols-2">
+          <h1 className="text-2xl mb-2 md:text-4xl md:mb-5 lg:text-5xl gallery-text-animate">
             A Portfolio Of Precision
           </h1>
-          <p className="text-sm md:text-2xl">
+
+          <p className="text-sm md:text-2xl lg:text-lg text-gray-800 lg:w-[70%] lg:ml-auto gallery-text-animate">
             Explore a curated collection of our recent work, showcasing the
             transformative power of a Solstice detail
           </p>
