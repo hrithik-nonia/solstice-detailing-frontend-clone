@@ -176,6 +176,27 @@ export const images = [
 ]
 
 
+export const tempCardData = [
+  {
+    img: "../../public/servise-page-img/card-img-1.avif",
+    heading: "Interior Restoration",
+    disc: `A comprehensive deep clean of all interior surfaces, from leather
+            conditioning to fabric shampooing, returning your cabin to
+            showroom condition.`,
+  },
+  {
+    img: "../../public/servise-page-img/card-img-2.avif",
+    heading: "Exterior Revival",
+    disc: `A meticulous process involving decontamination, multi-stage paint correction, and application of premium waxes or sealants for a brilliant, durable shine.`,
+  },
+  {
+    img: "../../public/servise-page-img/card-img-3.avif",
+    heading: "Ceramic Supremacy",
+    disc: `The ultimate in paint protection. We apply professional-grade ceramic coatings that provide unparalleled gloss, hydrophobicity, and resistance to environmental contaminants.`,
+  },
+];
+
+
 
 
 
