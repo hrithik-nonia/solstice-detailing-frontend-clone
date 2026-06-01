@@ -4,6 +4,11 @@ import { NavLink } from "react-router-dom";
 import ImgCatelog from "../component/img-catelog.jsx";
 import { useAppContext } from "../app-context/app-context.jsx";
 import { images } from "../constant.js";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Landing() {
   // use state from context to slide images
@@ -23,6 +28,167 @@ export default function Landing() {
   // ref for section 4
   const sec4Ref = useRef(null);
 
+  // animations
+  useGSAP(() => {
+    gsap.fromTo(
+      ".animate-banner-title",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
+    );
+    gsap.fromTo(
+      ".animate-banner-text-p",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.4 },
+    );
+    gsap.fromTo(
+      ".animate-banner-text-btn",
+      { opacity: 0, y: 100, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        x: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.8,
+      },
+    );
+  });
+
+  // scroll trigger animations
+
+  const [
+    leftImgRef,
+    rightImgRef,
+    sec2TextRef,
+    sec2TextPRef,
+    sec2BtnRef,
+    sec3TextRef,
+    sec3TextPRef,
+    sec4TextRef,
+    sec4TextPRef,
+    sec5TextRef,
+    sec5ContRef,
+  ] = [
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef(),
+    useRef([]),
+  ];
+
+  useGSAP(() => {
+    gsap.from(leftImgRef.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+
+      scrollTrigger: {
+        trigger: leftImgRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(rightImgRef.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: rightImgRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec2TextRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec2TextRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec2TextPRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec2TextPRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec2BtnRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec2BtnRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec3TextRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec3TextRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec3TextPRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec3TextPRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec4TextRef.current, {
+      opacity: 0,
+      x: -100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec4TextRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec4TextPRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec4TextPRef.current,
+        start: "top 90%",
+      },
+    });
+    gsap.from(sec5TextRef.current, {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: sec5TextRef.current,
+        start: "top 90%",
+      },
+    });
+    sec5ContRef.current.forEach((el, i) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: i * 0.2,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+        },
+      });
+    });
+  });
+
   return (
     <>
       {/* section 1 */}
@@ -40,18 +206,19 @@ export default function Landing() {
 
         {/* text area for banner */}
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 bg-white/10 lg:flex-row lg:items-center lg:pl-16 lg:pr-5">
-          <h1 className="text-black/90 text-3xl md:text-5xl font-bold max-w-xl lg:max-w-sm">
+          <h1 className="text-black/90 text-3xl md:text-5xl font-bold max-w-xl lg:max-w-sm animate-banner-title">
             Automotive perfection, redefined
           </h1>
+
           <div className=" lg:ml-auto ">
-            <p className="text-black/80 text-sm md:text-base mt-4 max-w-md lg:max-w-[300px] mb-6">
+            <p className="text-black/80 text-sm md:text-base mt-4 max-w-md lg:max-w-[300px] mb-6 animate-banner-text-p">
               We provide an unrivaled standard of vehicle care, restoring and
               protecting your automotive investment with scientific precision.
             </p>
 
             <NavLink
               to="/contact"
-              className=" w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 transition"
+              className=" w-fit bg-black text-white font-semibold px-6 py-3 rounded-md hover:bg-black/80 transition animate-banner-text-btn"
             >
               Get a Quote
             </NavLink>
@@ -69,7 +236,8 @@ export default function Landing() {
             <img
               src="/landing-page-img/lan-cont-img.avif"
               alt="Car headlight"
-              className="w-full h-full object-cover lg:object-contain"
+              className="w-full h-full object-cover lg:object-contain animate-sec2-img"
+              ref={leftImgRef}
             />
           </div>
 
@@ -78,19 +246,26 @@ export default function Landing() {
             <img
               src="/landing-page-img/lan-cont-2-img.avif"
               alt="Car mirror"
-              className="w-full h-full object-cover lg:object-contain"
+              className="w-full h-full object-cover lg:object-contain animate-sec2-img"
+              ref={rightImgRef}
             />
           </div>
         </div>
 
         <div className="lg:my-auto lg:gap-40 lg:flex lg:flex-col lg:px-5">
           {/* Text Content */}
-          <h2 className="text-2xl md:text-5xl font-medium text-gray-900 leading-snug mb-3 lg:text-4xl">
+          <h2
+            className="text-2xl md:text-5xl font-medium text-gray-900 leading-snug mb-3 lg:text-4xl "
+            ref={sec2TextRef}
+          >
             A Spectrum Of Detailing Excellence
           </h2>
 
           <div>
-            <p className="text-sm md:text-2xl text-gray-500 leading-relaxed mb-6 lg:text-lg">
+            <p
+              className="text-sm md:text-2xl text-gray-500 leading-relaxed mb-6 lg:text-lg"
+              ref={sec2TextPRef}
+            >
               From intensive restoration to protective ceramic coatings, our
               services are tailored to the unique needs of your vehicle.
             </p>
@@ -99,6 +274,7 @@ export default function Landing() {
             <NavLink
               to="/service"
               className="bg-black text-white text-sm md:text-xl lg:text-lg font-medium px-6 py-4 rounded-md hover:bg-gray-800 transition  lg:py-3 lg:px-6 hover:underline"
+              ref={sec2BtnRef}
             >
               Discover Our Services
             </NavLink>
@@ -117,11 +293,17 @@ export default function Landing() {
         </div>
 
         <div className="px-4 py-6 md:px-8 md:py-15 w-[90%] lg:my-auto lg:w-full lg:px-30">
-          <h2 className="text-2xl md:text-5xl font-medium text-gray-900 leading-tight mb-3 lg:leading-12">
+          <h2
+            className="text-2xl md:text-5xl font-medium text-gray-900 leading-tight mb-3 lg:leading-12"
+            ref={sec3TextRef}
+          >
             Where Artistry <br /> Meets Engineering
           </h2>
 
-          <p className="text-sm md:text-3xl text-gray-500 leading-5 md:leading-10 lg:text-lg lg:leading-6 lg:pt-7">
+          <p
+            className="text-sm md:text-3xl text-gray-500 leading-5 md:leading-10 lg:text-lg lg:leading-6 lg:pt-7"
+            ref={sec3TextPRef}
+          >
             Our multi-stage process combines cutting-edge technology with
             time-honored techniques, ensuring a flawless finish that endures. We
             treat every vehicle as a masterpiece in the making.
@@ -133,20 +315,26 @@ export default function Landing() {
       <div className="w-full px-4 py-6 md:px-8 pt-20 relative" ref={sec4Ref}>
         {/* Heading */}
         <div className="lg:grid lg:grid-cols-[70%_30%] ">
-          <h2 className="text-2xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl">
+          <h2
+            className="text-2xl font-medium text-gray-900 leading-tight mb-2 md:text-5xl"
+            ref={sec4TextRef}
+          >
             The Proof Is In The Polish
           </h2>
-          <p className="text-sm md:text-3xl text-gray-500 mb-5 lg:text-2xl">
+          <p
+            className="text-sm md:text-3xl text-gray-500 mb-5 lg:text-2xl"
+            ref={sec4TextPRef}
+          >
             Witness the transformative results our clients experience.
           </p>
         </div>
 
         {/* Slider */}
-        <div className="relative w-full h-130 md:h-[500px] rounded-xl overflow-hidden lg:pt-10">
+        <div className="relative w-full h-130 md:h-[500px] rounded-xl overflow-hidden lg:mt-10  transition-all duration-500 ">
           <img
             src={section4Images[current]}
             alt={`Polish result ${current + 1}`}
-            className="w-full h-full object-cover transition-all duration-500 cursor-pointer"
+            className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:scale-105"
             onClick={() => {
               setShowImages(true);
             }}
@@ -188,13 +376,20 @@ export default function Landing() {
       {/* section 5 */}
       <div className="w-full lg:py-20">
         <div className="w-full px-4 py-6 md:px-8">
-          <h2 className="text-2xl md:text-4xl font-medium text-gray-900 mb-6 lg:text-6xl lg:w-1/3 lg:mb-10">
+          <h2
+            ref={sec5TextRef}
+            className="text-2xl md:text-4xl font-medium text-gray-900 mb-6 lg:text-6xl lg:w-1/3 lg:mb-10"
+          >
             Endorsed By Connoisseurs
           </h2>
 
           <div className="flex flex-col gap-4 lg:flex-row ">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-gray-100 rounded-xl p-5">
+              <div
+                key={i}
+                className="bg-gray-100 rounded-xl p-5"
+                ref={(el) => (sec5ContRef.current[i] = el)}
+              >
                 <p className="text-sm md:text-base text-gray-800 leading-relaxed mb-3">
                   "{t.quote}"
                 </p>
