@@ -3,8 +3,11 @@ import { images } from "../constant.js";
 import { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useAppContext } from "../app-context/app-context.jsx";
 
 export default function Gallery() {
+  // set initial seate value after clicking on an image
+  const { setCurrent } = useAppContext();
   // state for show images
   const [showImages, setShowImages] = useState(false);
 
@@ -58,7 +61,10 @@ export default function Gallery() {
                   src={img}
                   alt={`car image ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
-                  onClick={() => setShowImages(true)}
+                  onClick={() => {
+                    setShowImages(true);
+                    setCurrent(index);
+                  }}
                 />
               </div>
             );
