@@ -29,7 +29,7 @@ export default function ImgCatelog({ onClose, redirectToSec4, currentIndex }) {
 
         <button
           onClick={() => setCurrent((prev) => (prev > 0 ? prev - 1 : 0))}
-          className="absolute left-20 z-10 top-[50%] bg-gray-300 shadow px-3 py-2 rounded-full disabled:opacity-40"
+          className="absolute lg:left-20 left-2 z-10 top-[50%] bg-gray-300 shadow px-3 py-2 rounded-full disabled:opacity-40"
           disabled={current === 0}
           aria-label="Previous Image"
         >
@@ -37,7 +37,7 @@ export default function ImgCatelog({ onClose, redirectToSec4, currentIndex }) {
         </button>
 
         {/* Images Scroll Area */}
-        <div className="w-full h-screen flex items-center justify-center px-24">
+        <div className="w-full h-screen flex items-center justify-center lg:px-24">
           <img
             src={images[current]}
             alt={`Gallery Image ${current + 1}`}
@@ -50,7 +50,7 @@ export default function ImgCatelog({ onClose, redirectToSec4, currentIndex }) {
           onClick={() =>
             setCurrent((prev) => (prev < images.length - 1 ? prev + 1 : prev))
           }
-          className="absolute right-20 z-10 top-[50%] bg-gray-300 shadow px-3 py-2 rounded-full disabled:opacity-40"
+          className="absolute lg:right-20 right-2 z-10 top-[50%] bg-gray-300 shadow px-3 py-2 rounded-full disabled:opacity-40"
           disabled={current === images.length - 1}
           aria-label="Next Image"
         >

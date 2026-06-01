@@ -85,7 +85,7 @@ export default function Footer() {
 
         {/* Links */}
         <div className="flex flex-col gap-2 mb-8 lg:grid lg:grid-cols-2 ">
-          <div className="lg:grid lg:grid-cols-2 lg:w-1/2 lg:gap-y-3">
+          <div className="grid lg:grid-cols-2 lg:w-1/2 gap-y-3 grid-row ">
             {footerLinks.map(({ label, link }, i) => (
               <NavLink
                 to={link}
@@ -100,9 +100,9 @@ export default function Footer() {
           {/* Copyright */}
           <div className="lg:flex lg:items-center lg:justify-end">
             <p className="text-xs text-gray-400">
-              © 2035 by Solstice Detailing. Powered and secured by
+              © 2026 by Solstice Detailing. Powered and secured by
               <a href="#" className="underline text-gray-600">
-                Wix
+                abc
               </a>
             </p>
           </div>
